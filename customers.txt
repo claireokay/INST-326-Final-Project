@@ -1,0 +1,34 @@
+Name:  Toppings:    Total: 
+Mathew,  1,        $10.99
+Jhon,    3,        $11.99
+Alex     4,        $13.99
+Sara,    1,        $10.99
+Emily,   3,        $12.99
+Liz,     3,        $12.99
+Josh,    2,        $11.99
+Miles,   4,        $13.99
+Mason,   1,        $10.99
+Harper,  3,        $12.99
+Evelyn,  2,        $11.99
+Mia,     1,        $10.99
+Bell,    3,        $12.99
+Sophia,  0,        $9.99
+Ava,     3,        $12.99
+Osman,   0,        $9.99
+
+
+PIZZA 
+
+size:
+small = 5.99
+medium = 7.99
+large = 9.99
+
+toppings:
+1 topping = $1.00
+2 toppings = $2.00
+3 toppings = $ 3.00
+4 toppings = $ 4.00
+
+
+
