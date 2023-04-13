@@ -7,7 +7,7 @@ class Pizza:
     """
     pass
 
-class Customer:
+class Shop:
     """Generates class for each customer.
     """
     pass
