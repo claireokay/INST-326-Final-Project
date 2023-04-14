@@ -131,9 +131,9 @@ def main(filepath):
 
     # using regex to filter through list of customer and orders 
         pattern = r"""^(?P<Customer_Name>\w+),
-        \s+(?P<Pizza_Size>\w+),
-        \s+(?P<Toppings>\d+),
-        \s+\$(?P<Price>\d+\.\d{2})$"""
+        \s*(?P<Pizza_Size>[SML]),
+        \s*(?P<Toppings>(?:\w+,?\s*)+),
+        \s*\$(?P<Price>\d+\.\d{2})$"""
         for line in f: 
            match = re.match(pattern, line)
            if match:
