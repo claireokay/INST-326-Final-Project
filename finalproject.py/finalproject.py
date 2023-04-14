@@ -3,8 +3,12 @@
 # import statements
 from argparse import ArgumentParser
 from json import load
+import sys
 import re
 import random
+
+pizzaSizeCosts= {"small": 5.99, "medium": 7.99, "large":9.99}
+numToppingPrice={1:1, 2:2, 3:3, 4:4}
 
 # pizza class
 class Pizza:
@@ -150,7 +154,7 @@ def parse_args(arglist):
     return parser.parse_args(arglist)
 
 # if __name__ = "__main__": statement
-if __name__ = "__main__":
+if __name__ == "__main__":
     try:
         args = parse_args(sys.argv[1:])
     except ValueError as e:
