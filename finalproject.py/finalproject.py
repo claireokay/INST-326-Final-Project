@@ -109,7 +109,8 @@ class Shop:
         Returns
             grossProf (int): the gross profits.
         """
-        
+    def __repr__(self):
+            return f"Shop({self.customers}, {self.inventory})"
     
 # main() function
 def main(filepath):
