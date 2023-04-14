@@ -121,10 +121,10 @@ def main(filepath):
     """--
     
     Args:
-        --
+        pattern(str): regular expression that filters through txt file 
         
     Side effects:
-        Prints results to stdout.
+        prints out the customer customer name, pizza size, toppings, and price  
     """
     # open file
     with open(filepath, "r", encoding="utf-8") as f:
