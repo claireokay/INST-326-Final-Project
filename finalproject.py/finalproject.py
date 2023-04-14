@@ -128,12 +128,22 @@ def main(filepath):
     """
     # open file
     with open(filepath, "r", encoding="utf-8") as f:
-        orders = load(f)
-    
-    # create Shop class, pass in inventory and customers??
-    dailySummary = Shop(orders)
-    
-    # print results
+
+    # using regex to filter through list of customer and orders 
+        pattern = r"""^(?P<Customer_Name>\w+),
+        \s+(?P<Pizza_Size>\w+),
+        \s+(?P<Toppings>\d+),
+        \s+\$(?P<Price>\d+\.\d{2})$"""
+        for line in f: 
+           match = re.match(pattern, line)
+           if match:
+               print(f"Customer: {match.group('Customer_Name')}")
+               print(f"Pizza Size: {match.group('Pizza_Size')}")
+               print(f"Toppings: {match.group('Toppings')}")
+               print(f"Total Price: {match.group('Price')}")
+           else:
+              pass
+        
 
 # parse_args() function
 def parse_args(arglist):
