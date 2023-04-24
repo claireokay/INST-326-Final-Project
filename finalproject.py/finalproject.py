@@ -5,51 +5,20 @@ from argparse import ArgumentParser
 from json import load
 import sys
 import re
-import random
 
+TOPPINGS_INVENTORY= {
+  'Olives': 10,
+  'Sausages':2,
+  'Mushrooms':10,  
+  'Ham': 10,
+  'Spinach':10,
+  'Cheese':10,
+  'Chicken':10,
+  'Onions': 10,
+}
 pizzaSizeCosts= {"small": 5.99, "medium": 7.99, "large":9.99}
 numToppingPrice={1:1, 2:2, 3:3, 4:4}
-
-# pizza class
-class Pizza:
-    """Generates a customer's pizza.
      
-    Attributes:
-        crust (str): the customer's choice of pizza crust.
-        sauce (str): the customer's choice of pizza sauce.
-        size (str): the customer's choice of pizza size.
-        toppings (list of str): the customer's choice of pizza toppings.
-    """
-    def __init__(self, crust, sauce, size = "medium"):
-        """Sets attributes to Pizza class.
-        
-        Args:
-            crust (str): the customer's choice of pizza crust.
-            sauce (str): the customer's choice of pizza sauce.
-            size (str): the customer's choice of pizza size.
-            toppings (list of str): the customer's choice of pizza toppings.
-        
-        Side effects:
-            Sets arguments.
-        """
-        self.crust = crust
-        self.sauce = sauce
-        self.size = size
-        self.toppings = []
-    
-    def add_topping(self, topping):
-        """Adds topping to pizza.
-        
-        Args:
-            topping (str): the topping to be added.
-            
-        Side effects:
-            topping (list of str): receives a topping.
-        """
-        self.toppings.append(topping)
-
-
-# shop class      
 class Shop:
     """Simulates the shop.
     
@@ -87,7 +56,7 @@ class Shop:
         """
         # iterate through customers (dict)
         # call Customer on each iteraction
-            # Customer will generate an order
+        # Customer will generate an order
         # orderQueue will return the total profits (int)
     
     def updateInventory(self, revenue, inventory):
@@ -102,6 +71,7 @@ class Shop:
         """
         # iterate through customers (dict) and keep track of each food used
         # iterate through inventory and subtract all foods used
+        # use key function to sort through to find inventory(ff)
         
     def getGross(self, revenue, inventory):
         """Calculate the gross revenue
@@ -143,7 +113,7 @@ def main(filepath):
                print(f"Total Price: {match.group('Price')}")
            else:
               pass
-        
+    # use random module to choose random customers from list 
 
 # parse_args() function
 def parse_args(arglist):
