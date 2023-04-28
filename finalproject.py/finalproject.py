@@ -16,8 +16,16 @@ TOPPINGS_INVENTORY= {
   'Chicken':10,
   'Onions': 10,
 }
-pizzaSizeCosts= {"small": 5.99, "medium": 7.99, "large":9.99}
-numToppingPrice={1:1, 2:2, 3:3, 4:4}
+pizzaSizeCosts= {
+"small": 5.99,
+ "medium": 7.99, 
+ "large":9.99}
+numToppingPrice={
+    1:1, 
+    2:2, 
+    3:3, 
+    4:4,
+}
      
 class Shop:
     """Simulates the shop.
@@ -45,8 +53,8 @@ class Shop:
             # append the pizzas to the list
             pass
     
-    def getProfit(self, pizzaList):
-         """Iterates through orders to determine the daily profit.
+    def getProfit(self, pizzaList): "Fatma"
+    """Iterates through orders to determine the daily profit.
         
         Args:
             pizzaList (list): list of pizzas made.
@@ -59,8 +67,8 @@ class Shop:
         # Customer will generate an order
         # orderQueue will return the total profits (int)
     
-    def updateInventory(self, revenue, inventory):
-         """Updates invetory for the shop.
+    def updateInventory(self, revenue, inventory):"Fatma"
+    """Updates invetory for the shop.
         
         Args:
             revenue (int): total revenue from the day's orders.
@@ -87,8 +95,8 @@ class Shop:
             return f"Shop({self.customers}, {self.inventory})"
     
 # main() function
-def main(filepath):
-    """--
+def main(filepath): "Claire"
+"""--
     
     Args:
         pattern(str): regular expression that filters through txt file 
@@ -97,7 +105,7 @@ def main(filepath):
         prints out the customer customer name, pizza size, toppings, and price  
     """
     # open file
-    with open(filepath, "r", encoding="utf-8") as f:
+with open(filepath, "r", encoding="utf-8") as f:
 
     # using regex to filter through list of customer and orders 
         pattern = r"""^(?P<Customer_Name>\w+),
