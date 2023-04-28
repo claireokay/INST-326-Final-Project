@@ -124,8 +124,8 @@ with open(filepath, "r", encoding="utf-8") as f:
     # use random module to choose random customers from list 
 
 # parse_args() function
-def parse_args(arglist):
-    """Parse command-line arguments.
+def parse_args(arglist):"Andy"
+"""Parse command-line arguments.
     
     Expect one mandatory argument:
         filepath: a path to file containing --.
