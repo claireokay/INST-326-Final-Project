@@ -52,7 +52,8 @@ class Shop:
             # append the pizzas to the list
             pass
     
-    def getProfit(self, pizzaList): "Fatma"
+    def getProfit(self, file): "Fatma"
+ 
     """Iterates through orders to determine the daily profit.
         
         Args:
@@ -61,10 +62,20 @@ class Shop:
         Returns:
             revenue (int): total revenue from the day's orders.
         """
-        # iterate through customers (dict)
-        # call Customer on each iteraction
-        # Customer will generate an order
-        # orderQueue will return the total profits (int)
+    pattern = r"""^(?P<Customer_Name>\w+),
+            \s*(?P<Pizza_Size>[SML]),
+            \s*(?P<Toppings>(?:\w+,?\s*)+),
+            \s*\$(?P<Price>\d+\.\d{2})$"""
+    total_prices = 0
+    num_prices = 0
+    
+    for line in file:
+        match = re.match(pattern, line)
+        if match:
+            price = float(match.group('Price'))
+            total_prices += price
+            num_prices +=1
+    return num_prices, total_prices
     
     def updateInventory(self, revenue, inventory):"Fatma"
     """Updates invetory for the shop.
@@ -76,6 +87,7 @@ class Shop:
         Side effect:
             Update inventory dictionary.
         """
+       
         # iterate through customers (dict) and keep track of each food used
         # iterate through inventory and subtract all foods used
         # use key function to sort through to find inventory(ff)
@@ -104,7 +116,7 @@ def main(filepath): "Claire"
         prints out the customer customer name, pizza size, toppings, and price  
     """
     # open file
-with open(filepath, "r", encoding="utf-8") as f:
+with open(filename, "r", encoding="utf-8") as f:
 
     # using regex to filter through list of customer and orders 
         pattern = r"""^(?P<Customer_Name>\w+),
