@@ -6,19 +6,20 @@ import sys
 import re
 
 TOPPINGS_INVENTORY= {
-  'Olives': 10,
-  'Sausages':2,
-  'Mushrooms':10,  
-  'Ham': 10,
-  'Spinach':10,
-  'Cheese':10,
-  'Chicken':10,
-  'Onions': 10,
+  'olives': 10,
+  'sausages':2,
+  'mushrooms':10,  
+  'ham': 10,
+  'spinach':10,
+  'cheese':10,
+  'chicken':10,
+  'onions': 10,
 }
 pizzaSizeCosts= {
-"small": 5.99,
- "medium": 7.99, 
- "large":9.99}
+"S": 5.99,
+"M": 7.99, 
+"L":9.99,
+}
 numToppingPrice={
     1:1, 
     2:2, 
@@ -86,6 +87,7 @@ class Shop:
         Side effect:
             Update inventory dictionary.
         """
+        
        
         # iterate through customers (dict) and keep track of each food used
         # iterate through inventory and subtract all foods used
