@@ -21,12 +21,17 @@ pizzaSizeCosts= {
 "L":9.99,
 }
 numToppingPrice={
-    1:1, 
-    2:2, 
+    1:2, 
+    2:3, 
     3:3, 
     4:4,
 }
-     
+pizzaSizeRetail = {
+"S": 2.00,
+"M": 3.50,
+"L": 4.00,   
+}
+    
 class Shop:
     """Simulates the shop.
     
@@ -34,10 +39,22 @@ class Shop:
         customers (dictionary): person string (key) to order list (value).
         inventory (dictionary): item string (key) to item list (value).
     """
-    def __init__(self, customers, inventory):
+    def __init__(self, customers, inventory, pattern):
         self.customers = customers
         self.inventory = inventory
+        self.pattern = pattern
         
+        self.pattern = r"""^(?P<Customer_Name>\w+),
+        \s*(?P<Pizza_Size>[SML]),
+        \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
+        for line in f: 
+           match = re.match(pattern, line)
+           if match:
+               print(f"Customer: {match.group('Customer_Name')}")
+               print(f"Pizza Size: {match.group('Pizza_Size')}")
+             
+           else:
+              raise TypeError
     def makeOrders(self, customers):
         """Makes order for a customer's pizzas.
         
@@ -62,20 +79,9 @@ class Shop:
         Returns:
             revenue (int): total revenue from the day's orders.
         """
-        pattern = r"""^(?P<Customer_Name>\w+),
-            \s*(?P<Pizza_Size>[SML]),
-            \s*(?P<Toppings>(?:\w+,?\s*)+),
-            \s*\$(?P<Price>\d+\.\d{2})$"""
-        total_prices = 0
-        num_prices = 0
-    
-        for line in file:
-            match = re.match(pattern, line)
-            if match:
-                price = float(match.group('Price'))
-                total_prices += price
-                num_prices +=1
-        return num_prices, total_prices
+        #counter that counts each topping and * by .25 (profit margin/topping)
+     
+        
     
     def updateInventory(self, revenue, inventory):"Fatma"
     """Updates invetory for the shop.
@@ -118,19 +124,13 @@ def main(filepath):
     """
     # open file
     with open(filepath, "r", encoding="utf-8") as f:
-
-    # using regex to filter through list of customer and orders 
-        pattern = r"""^(?P<Customer_Name>\w+),
-        \s*(?P<Pizza_Size>[SML]),
-        \s*(?P<Toppings>(?:\w+,?\s*)+),
-        \s*\$(?P<Price>\d+\.\d{2})$"""
         for line in f: 
-           match = re.match(pattern, line)
+           match = re.match(,line)
            if match:
                print(f"Customer: {match.group('Customer_Name')}")
                print(f"Pizza Size: {match.group('Pizza_Size')}")
                print(f"Toppings: {match.group('Toppings')}")
-               print(f"Total Price: {match.group('Price')}")
+             
            else:
               raise TypeError
 

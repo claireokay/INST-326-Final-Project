@@ -1,15 +1,16 @@
-Name:    Size   Toppings:                               Total: 
-Mathew,   M,       olives ,                              $8.99
-Jhon,     S,       olives, sausage, mushroms,            $8.99
-Alex      L,       tomatoes,spinach,olives,cheese ,      $13.99
-Sara,     L,       extra cheese,                         $10.99
-Emily,    S,       mushrooms,olives,tomatoes ,           $8.99
-Liz,      M,       ham,mushroom,olives  ,                $10.99
-Josh,     M,       extra cheese,onions,                  $9.99
-Miles,    S,       mushrooms,olives,tomatoes,ham ,       $9.99
-Mason,    L,       extra cheese,                         $10.99
-Harper,   L,       olives,onions,chicken ,               $12.99
-Evelyn,   M,       spinach,olives,ham,chicken ,          $9.99
-Mia,      S,       extra cheese,                         $6.99
-Bell,     S,       sausage,olives,tomatoes   ,           $8.99
-Sophia,   S,       cheese,                               $5.99
+Name:    Size   Toppings:                                
+Mathew,   M,       olives,                              
+Jhon,     S,       olives,sausage,mushroms,            
+Alex      L,       tomatoes,spinach,olives,cheese,      
+Sara,     L,       cheese,                         
+Emily,    S,       mushrooms,olives,tomatoes,           
+Liz,      M,       ham,mushroom,olives,                
+Josh,     M,       cheese,onions,                  
+Miles,    S,       mushrooms,olives,tomatoes,ham,       
+Mason,    L,       cheese,                         
+Harper,   L,       olives,onions,chicken,               
+Evelyn,   M,       spinach,olives,ham,chicken,          
+Mia,      S,       cheese,                        
+Bell,     S,       sausage,olives,tomatoes,          
+Sophia,   S,       cheese,                               
+Max       M,       olives,cheese,sausage,ham,mushrooms
