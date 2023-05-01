@@ -52,9 +52,8 @@ class Shop:
             # append the pizzas to the list
             pass
     
-    def getProfit(self, file): "Fatma"
- 
-    """Iterates through orders to determine the daily profit.
+    def getProfit(self, file):
+        """Iterates through orders to determine the daily profit.
         
         Args:
             pizzaList (list): list of pizzas made.
@@ -62,20 +61,20 @@ class Shop:
         Returns:
             revenue (int): total revenue from the day's orders.
         """
-    pattern = r"""^(?P<Customer_Name>\w+),
+        pattern = r"""^(?P<Customer_Name>\w+),
             \s*(?P<Pizza_Size>[SML]),
             \s*(?P<Toppings>(?:\w+,?\s*)+),
             \s*\$(?P<Price>\d+\.\d{2})$"""
-    total_prices = 0
-    num_prices = 0
+        total_prices = 0
+        num_prices = 0
     
-    for line in file:
-        match = re.match(pattern, line)
-        if match:
-            price = float(match.group('Price'))
-            total_prices += price
-            num_prices +=1
-    return num_prices, total_prices
+        for line in file:
+            match = re.match(pattern, line)
+            if match:
+                price = float(match.group('Price'))
+                total_prices += price
+                num_prices +=1
+        return num_prices, total_prices
     
     def updateInventory(self, revenue, inventory):"Fatma"
     """Updates invetory for the shop.
