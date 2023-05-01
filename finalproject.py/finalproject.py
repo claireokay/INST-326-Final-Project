@@ -20,12 +20,7 @@ pizzaSizeCosts= {
 "M": 7.99, 
 "L":9.99,
 }
-numToppingPrice={
-    1:2, 
-    2:3, 
-    3:3, 
-    4:4,
-}
+
 pizzaSizeRetail = {
 "S": 2.00,
 "M": 3.50,
@@ -39,38 +34,22 @@ class Shop:
         customers (dictionary): person string (key) to order list (value).
         inventory (dictionary): item string (key) to item list (value).
     """
-    def __init__(self, customers, inventory, pattern):
-        self.customers = customers
-        self.inventory = inventory
+    def __init__(self, pattern):
         self.pattern = pattern
         
         self.pattern = r"""^(?P<Customer_Name>\w+),
         \s*(?P<Pizza_Size>[SML]),
         \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
-        for line in f: 
+        for line in self.pattern: 
            match = re.match(pattern, line)
            if match:
-               print(f"Customer: {match.group('Customer_Name')}")
-               print(f"Pizza Size: {match.group('Pizza_Size')}")
-             
+               self.customer = match.group('Customer_Name')
+               self.toppings = match.group('Toppings')
+               self.size = match.group('Pizza_Size')
            else:
-              raise TypeError
-    def makeOrders(self, customers):
-        """Makes order for a customer's pizzas.
-        
-        Args:
-            customers (dictionary): person string (key) to order list (value).
-        
-        Returns:
-            pizzaList (list): list of pizzas made.
-        """
-        # iterate through each customer
-        for customer, pizza in customers.items():
-            # call Pizza on each pizza in the list
-            # append the pizzas to the list
-            pass
+              raise ValueError
     
-    def getProfit(self, file):
+    def getProfit(self):
         """Iterates through orders to determine the daily profit.
         
         Args:
@@ -80,7 +59,7 @@ class Shop:
             revenue (int): total revenue from the day's orders.
         """
         #counter that counts each topping and * by .25 (profit margin/topping)
-     
+        
         
     
     def updateInventory(self, revenue, inventory):"Fatma"
@@ -109,6 +88,7 @@ class Shop:
         Returns
             grossProf (int): the gross profits.
         """
+        
     def __repr__(self):
             return f"Shop({self.customers}, {self.inventory})"
     
