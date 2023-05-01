@@ -105,8 +105,8 @@ class Shop:
             return f"Shop({self.customers}, {self.inventory})"
     
 # main() function
-def main(filepath): "Claire"
-"""--
+def main(filepath): 
+    """
     
     Args:
         pattern(str): regular expression that filters through txt file 
@@ -115,7 +115,7 @@ def main(filepath): "Claire"
         prints out the customer customer name, pizza size, toppings, and price  
     """
     # open file
-with open(filename, "r", encoding="utf-8") as f:
+    with open(filepath, "r", encoding="utf-8") as f:
 
     # using regex to filter through list of customer and orders 
         pattern = r"""^(?P<Customer_Name>\w+),
@@ -130,8 +130,7 @@ with open(filename, "r", encoding="utf-8") as f:
                print(f"Toppings: {match.group('Toppings')}")
                print(f"Total Price: {match.group('Price')}")
            else:
-              pass
-    # use random module to choose random customers from list 
+              raise TypeError
 
 # parse_args() function
 def parse_args(arglist):
