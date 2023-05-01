@@ -36,16 +36,28 @@ class Shop:
     """
     def __init__(self, pattern):
         self.pattern = pattern
-        
-        self.pattern = r"""^(?P<Customer_Name>\w+),
-        \s*(?P<Pizza_Size>[SML]),
-        \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
+        self.toppings = list()
+        self.counter = 0
+        self.revenue = 0
+        self.pattern = r"""^(?P<Size>\w),
+        \s*(?P<Topping1>[\w\s]+),
+        ?\s*(?P<Topping2>[\w\s]+)?,
+        ?\s*(?P<Topping3>[\w\s]+)?,
+        ?\s*(?P<Topping4>[\w\s]+)?,?\s*([\w\s]+)?$
+        """
         for line in self.pattern: 
            match = re.match(pattern, line)
            if match:
-               self.customer = match.group('Customer_Name')
-               self.toppings = match.group('Toppings')
-               self.size = match.group('Pizza_Size')
+               self.size = match.group('Size')
+               self.topping1 = match.group('Topping1')
+               self.topping2 = match.group('Topping2')
+               self.topping3 = match.group('Topping3')
+               self.topping4 = match.group('Topping4')
+               self.toppings.append(self.topping1)
+               self.toppings.append(self.topping2)
+               self.toppings.append(self.topping3)
+               self.toppings.append(self.topping4)
+           
            else:
               raise ValueError
     
@@ -58,6 +70,7 @@ class Shop:
         Returns:
             revenue (int): total revenue from the day's orders.
         """
+        
         #counter that counts each topping and * by .25 (profit margin/topping)
         
         
@@ -78,20 +91,33 @@ class Shop:
         # iterate through inventory and subtract all foods used
         # use key function to sort through to find inventory(ff)
         
-    def getGross(self, revenue, inventory):
+    def getGross(self):
+        
         """Calculate the gross revenue
-        
-        Args:
-            revenue (int): total revenue from the day's orders.
-            inventory (dictionary): item string (key) to item list (value).
-        
+       
         Returns
             grossProf (int): the gross profits.
         """
+        self.revenue = 0
+        for topping in self.toppings:
+            self.counter += 1
+        if self.size == "S":
+            self.revenue += 5.99
+        elif self.size == "M":
+            self.revenue += 7.99
+        else:
+            revenue += 9.99
+        self.revenue += self.counter+1  
         
+        return self.revenue
+            
+               
     def __repr__(self):
-            return f"Shop({self.customers}, {self.inventory})"
+            return f"Shop({self.pattern})"
     
+    def __str__(self):
+        return f""
+        
 # main() function
 def main(filepath): 
     """
