@@ -46,9 +46,9 @@ class Shop:
             for line in f: 
                 match = re.match(pattern,line)
                 if match:
-                    size = {match.group('Pizza_Size')}
-                    Toppings = {match.group('Toppings').split(',')}
-                    self.orders[self.order_num] = size, Toppings 
+                    size = match.group('Pizza_Size')
+                    Toppings = tuple(match.group('Toppings').split(','))
+                    self.orders[self.order_num] = (size, Toppings) 
                     order_num +=1 
              
                 else:
