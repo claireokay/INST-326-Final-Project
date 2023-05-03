@@ -34,32 +34,28 @@ class Shop:
         customers (dictionary): person string (key) to order list (value).
         inventory (dictionary): item string (key) to item list (value).
     """
-    def __init__(self, pattern):
-        self.pattern = pattern
-        self.toppings = list()
-        self.counter = 0
-        self.revenue = 0
-        self.pattern = r"""^(?P<Size>\w),
-        \s*(?P<Topping1>[\w\s]+),
-        ?\s*(?P<Topping2>[\w\s]+)?,
-        ?\s*(?P<Topping3>[\w\s]+)?,
-        ?\s*(?P<Topping4>[\w\s]+)?,?\s*([\w\s]+)?$
-        """
-        for line in self.pattern: 
-           match = re.match(pattern, line)
-           if match:
-               self.size = match.group('Size')
-               self.topping1 = match.group('Topping1')
-               self.topping2 = match.group('Topping2')
-               self.topping3 = match.group('Topping3')
-               self.topping4 = match.group('Topping4')
-               self.toppings.append(self.topping1)
-               self.toppings.append(self.topping2)
-               self.toppings.append(self.topping3)
-               self.toppings.append(self.topping4)
+    def __init__(self,filepath):
+         
+        self.inventory = TOPPINGS_INVENTORY 
+        self.orders = {}
+        order_num = 1
+        pattern = r"""^(?P<Pizza_Size>[SML]),
+            \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
            
-           else:
-              raise ValueError
+        with open(filepath, "r", encoding="utf-8") as f:
+            for line in f: 
+                match = re.match(pattern,line)
+                if match:
+                    size = {match.group('Pizza_Size')}
+                    Toppings = {match.group('Toppings').split(',')}
+                    self.orders[order_num] = size, Toppings 
+                    order_num +=1 
+             
+                else:
+                    raise TypeError
+
+                
+    
     
     def getProfit(self):
         """Iterates through orders to determine the daily profit.
@@ -72,6 +68,7 @@ class Shop:
         """
         
         #counter that counts each topping and * by .25 (profit margin/topping)
+        self.profit = 0 
         
         
     
@@ -85,11 +82,12 @@ class Shop:
         Side effect:
             Update inventory dictionary.
         """
-        
+    for line in f:
+            
        
         # iterate through customers (dict) and keep track of each food used
         # iterate through inventory and subtract all foods used
-        # use key function to sort through to find inventory(ff)
+        # use key function to sort through to find popular toppings (ff)
         
     def getGross(self):
         
@@ -128,17 +126,7 @@ def main(filepath):
     Side effects:
         prints out the customer customer name, pizza size, toppings, and price  
     """
-    # open file
-    with open(filepath, "r", encoding="utf-8") as f:
-        for line in f: 
-           match = re.match(,line)
-           if match:
-               print(f"Customer: {match.group('Customer_Name')}")
-               print(f"Pizza Size: {match.group('Pizza_Size')}")
-               print(f"Toppings: {match.group('Toppings')}")
-             
-           else:
-              raise TypeError
+
 
 # parse_args() function
 def parse_args(arglist):
