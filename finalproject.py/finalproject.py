@@ -80,22 +80,17 @@ class Shop:
             Update inventory dictionary.
         """
         
-        for i in self.orders:
-            topping_list =self.orders[i][1] 
+        for order in self.orders.values():
+            topping_list =order[1] 
             for j in topping_list:
-                if j in self.inventory:
-                    self.inventory[Topping]-=1
-                
-                
-
-            
-        
+                if j in self.inventory and self.inventory[j] > 1:
+                    self.inventory[j]-=1
+                else:
+                    raise ValueError('No more toppings left in inventory')
+                    
+        return self.inventory
          
             
-            
-       
-        # iterate through customers (dict) and keep track of each food used
-        # iterate through inventory and subtract all foods used
         # use key function to sort through to find popular toppings (ff)
         
     def getGross(self):
