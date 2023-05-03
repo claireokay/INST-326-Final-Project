@@ -92,7 +92,26 @@ class Shop:
          
             
         # use key function to sort through to find popular toppings (ff)
+    def get_popular_topping(self):
+        """Returns the most popular topping from the list of orders
         
+        Args: 
+            self
+            
+        Return:
+            A string representing the most popular topping  
+        """    
+        topping_counts = {}
+        for order in self.order.values():
+            topping_list = order[1]
+            for topping in topping_list:
+                if topping in topping_counts:
+                    topping_counts[topping] += 1
+                else:
+                    topping_counts[topping]=1
+                    
+        sorted_toppings = sorted(topping_counts.items(), key=lambda x: x[1], reverse=True)
+        return sorted_toppings[0][0]        
     def getGross(self):
         
         """Calculate the gross revenue
