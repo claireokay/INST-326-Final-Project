@@ -38,7 +38,7 @@ class Shop:
          
         self.inventory = TOPPINGS_INVENTORY 
         self.orders = {}
-        order_num = 1
+        self.order_num = 1
         pattern = r"""^(?P<Pizza_Size>[SML]),
             \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
            
@@ -48,15 +48,12 @@ class Shop:
                 if match:
                     size = {match.group('Pizza_Size')}
                     Toppings = {match.group('Toppings').split(',')}
-                    self.orders[order_num] = size, Toppings 
+                    self.orders[self.order_num] = size, Toppings 
                     order_num +=1 
              
                 else:
                     raise TypeError
 
-                
-    
-    
     def getProfit(self):
         """Iterates through orders to determine the daily profit.
         
@@ -72,8 +69,8 @@ class Shop:
         
         
     
-    def updateInventory(self, revenue, inventory):"Fatma"
-    """Updates invetory for the shop.
+    def updateInventory(self):
+        """Updates invetory for the shop.
         
         Args:
             revenue (int): total revenue from the day's orders.
@@ -82,7 +79,19 @@ class Shop:
         Side effect:
             Update inventory dictionary.
         """
-    for line in f:
+        
+        for i in self.orders:
+            topping_list =self.orders[i][1] 
+            for j in topping_list:
+                if j in self.inventory:
+                    self.inventory[Topping]-=1
+                
+                
+
+            
+        
+         
+            
             
        
         # iterate through customers (dict) and keep track of each food used
