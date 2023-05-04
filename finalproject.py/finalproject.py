@@ -68,7 +68,8 @@ class Shop:
         total = 0
 
         for order in self.orders.values():
-            p = pizzaSizeRetail[order[0]] + (0.25 * len(order[1])) if len(order[1]) > 0 else (p = pizzaSizeRetail[order[0]])
+            p = pizzaSizeRetail[order[0]] + (0.25 * len(order[1])) if \
+            len(order[1]) > 0 else (p = pizzaSizeRetail[order[0]])
             total += p
 
         return total 
