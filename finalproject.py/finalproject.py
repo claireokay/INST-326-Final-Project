@@ -49,9 +49,10 @@ class Shop:
                     size = match.group('Pizza_Size')
                     Toppings = tuple(match.group('Toppings').split(','))
                     self.orders[self.order_num] = (size, Toppings) 
-                    self.order_num +=1 
+                    self.order_num +=1  
                 else:
                     raise TypeError
+          
 
     def getProfit(self):
         """Iterates through orders to determine the daily profit.
@@ -85,12 +86,13 @@ class Shop:
         """
         
         for order in self.orders.values():
-            topping_list =order[1] 
+            topping_list = order[1] 
             for j in topping_list:
                 if j in self.inventory and self.inventory[j] > 1:
                     self.inventory[j]-=1
                 else:
-                    raise ValueError('No more toppings left in inventory')
+                    print(self.inventory)
+
                     
         return self.inventory
          
