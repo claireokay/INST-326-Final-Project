@@ -34,11 +34,12 @@ class Shop:
         customers (dictionary): person string (key) to order list (value).
         inventory (dictionary): item string (key) to item list (value).
     """
-    def __init__(self,filepath):
-         
+    def __init__(self, filepath): 
+        self.filepath = filepath
         self.inventory = TOPPINGS_INVENTORY 
         self.orders = {}
         self.order_num = 1
+        self.total = 0
         pattern = r"""^(?P<Pizza_Size>[SML]),
             \s*(?P<Toppings>(?:\w+,?\s*)+)$"""
            
@@ -49,8 +50,7 @@ class Shop:
                     size = match.group('Pizza_Size')
                     Toppings = tuple(match.group('Toppings').split(','))
                     self.orders[self.order_num] = (size, Toppings) 
-                    order_num +=1 
-             
+                    self.order_num +=1 
                 else:
                     raise TypeError
 
@@ -65,14 +65,14 @@ class Shop:
         """
         
         #counter that counts each topping and * by .25 (profit margin/topping)
-        total = 0
+        
 
         for order in self.orders.values():
             p = pizzaSizeRetail[order[0]] + (0.25 * len(order[1])) if \
-            len(order[1]) > 0 else (p = pizzaSizeRetail[order[0]])
-            total += p
+                (len(order[1]) > 0) else (p == pizzaSizeRetail[order[0]])
+            self.total += p
 
-        return total 
+        return self.total 
     
     def updateInventory(self):
         """Updates invetory for the shop.
@@ -115,8 +115,8 @@ class Shop:
                 else:
                     topping_counts[topping]=1
                     
-        sorted_toppings = sorted(topping_counts.items(), key=lambda x: x[1], reverse=True)
-        return sorted_toppings[0][0]        
+        self.sorted_toppings = sorted(topping_counts.items(), key=lambda x: x[1], reverse=True)
+        return self.sorted_toppings[0][0]        
     def getGross(self):
         
         """Calculate the gross revenue
@@ -139,10 +139,15 @@ class Shop:
             
                
     def __repr__(self):
-            return f"Shop({self.pattern})"
+            return f"Shop({self.filepath})"
     
     def __str__(self):
-        return f""
+        return f"""Summary:
+    Daily Revenue: {self.revenue}
+    Daily Profit: {self.total}
+    New Inventory: {self.inventory}
+    Most Popular Toppings: {self.sorted_toppings}
+    """
         
 # main() function
 def main(filepath): 
@@ -154,7 +159,11 @@ def main(filepath):
     Side effects:
         prints out the customer customer name, pizza size, toppings, and price  
     """
-
+    newPizzaShop = Shop(filepath)
+    newPizzaShop.getProfit()
+    newPizzaShop.get_popular_topping()
+    
+    
 
 # parse_args() function
 def parse_args(arglist):
