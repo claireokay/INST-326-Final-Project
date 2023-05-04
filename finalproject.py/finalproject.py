@@ -124,14 +124,17 @@ class Shop:
             grossProf (int): the gross profits.
         """
         self.revenue = 0
-        for topping in self.orders[1]:
-            self.revenue += 1
-        if self.orders[0] == "S":
-            self.revenue += 5.99
-        elif self.orders[0] == "M":
-            self.revenue += 7.99
-        else:
-            self.revenue += 9.99
+        for order in self.orders.values():
+            topping_list = order[1]
+            pizza_size= order[0]
+            for item in topping_list:
+                self.revenue += 1
+            if pizza_size == "S":
+                self.revenue += 5.99
+            elif pizza_size == "M":
+                self.revenue += 7.99
+            else:
+                self.revenue += 9.99
         self.revenue += self.order_num  
         
         return self.revenue
