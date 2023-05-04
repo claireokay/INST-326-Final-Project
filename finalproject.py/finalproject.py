@@ -90,8 +90,8 @@ class Shop:
             for j in topping_list:
                 if j in self.inventory and self.inventory[j] > 1:
                     self.inventory[j]-=1
-                else:
-                    print(self.inventory)
+                #else:
+                    #print(self.inventory)
 
                     
         return self.inventory
