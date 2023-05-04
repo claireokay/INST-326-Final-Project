@@ -138,7 +138,7 @@ class Shop:
             else:
                 self.revenue += 9.99
         self.revenue += self.order_num  
-        
+        self.revenue = round(self.revenue, 2)
         return self.revenue
             
                
@@ -147,8 +147,8 @@ class Shop:
     
     def __str__(self):
         return f"""Summary:
-    Daily Revenue: {self.revenue}
-    Daily Profit: {self.total}
+    Daily Revenue: ${self.revenue}
+    Daily Profit: ${self.total}
     New Inventory: {self.inventory}
     Most Popular Toppings: {self.sorted_toppings}
     """
