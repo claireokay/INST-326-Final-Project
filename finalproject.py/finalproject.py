@@ -106,7 +106,7 @@ class Shop:
             A string representing the most popular topping  
         """    
         topping_counts = {}
-        for order in self.order.values():
+        for order in self.orders.values():
             topping_list = order[1]
             for topping in topping_list:
                 if topping in topping_counts:
@@ -124,15 +124,15 @@ class Shop:
             grossProf (int): the gross profits.
         """
         self.revenue = 0
-        for topping in self.toppings:
-            self.counter += 1
-        if self.size == "S":
+        for topping in self.orders[1]:
+            self.revenue += 1
+        if self.orders[0] == "S":
             self.revenue += 5.99
-        elif self.size == "M":
+        elif self.orders[0] == "M":
             self.revenue += 7.99
         else:
-            revenue += 9.99
-        self.revenue += self.counter+1  
+            self.revenue += 9.99
+        self.revenue += self.order_num  
         
         return self.revenue
             
@@ -161,7 +161,9 @@ def main(filepath):
     newPizzaShop = Shop(filepath)
     newPizzaShop.getProfit()
     newPizzaShop.get_popular_topping()
-    
+    newPizzaShop.getGross()
+    newPizzaShop.updateInventory()
+    print(str(newPizzaShop))
     
 
 # parse_args() function
