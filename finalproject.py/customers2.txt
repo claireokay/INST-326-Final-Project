@@ -10,4 +10,4 @@ M, sausage,ham,chicken
 M, onions,spinach,mushrooms,sausages
 M, onions,chicken,cheese
 L, mushrooms,ham,spinach
-S, cheese,ham,spinach
+S, cheese,ham,spinac
