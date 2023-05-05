@@ -42,7 +42,7 @@ class Shop:
         self.orders = {}
         self.order_num = 1
         self.total = 0
-        pattern = r"^^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)*\w+)(?:,\s*)?$"
+        pattern = r"^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)*\w+)(?:,\s*)?$"
            
         with open(filepath, "r", encoding="utf-8") as f:
             for line in f: 
