@@ -4,6 +4,8 @@
 from argparse import ArgumentParser
 import sys
 import re
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 TOPPINGS_INVENTORY= {
   'olives': 10,
@@ -152,8 +154,11 @@ class Shop:
     Most Popular Toppings: {self.sorted_toppings}
     """
         
+    
+    
 # main() function
-def main(filepath): 
+def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
+         path6=None): 
     """
     
     Args:
@@ -168,12 +173,51 @@ def main(filepath):
     newPizzaShop.getGross()
     newPizzaShop.updateInventory()
     print(str(newPizzaShop))
-    if dailyprofit > 0:
-        print(f"""${dailyprofit} is a good profit. 
-Make sure to stock up on items people like to maximize profit!""")
-    else:
-        print(f"""${dailyprofit} isn't the best. 
-Maybe next time get moreitems people want to have a better day!""")
+    if path1 is not None:
+        newPizzaShop1 = Shop(path2)
+        dailyprofit1 = newPizzaShop1.getProfit()
+        newPizzaShop1.get_popular_topping()
+        newPizzaShop1.getGross()
+        newPizzaShop1.updateInventory()
+        print(str(newPizzaShop1))
+    if path2 is not None:
+        newPizzaShop2 = Shop(path2)
+        dailyprofit2 = newPizzaShop2.getProfit()
+        newPizzaShop2.get_popular_topping()
+        newPizzaShop2.getGross()
+        newPizzaShop2.updateInventory()
+        print(str(newPizzaShop2))
+    if path3 is not None:
+        newPizzaShop3 = Shop(path3)
+        dailyprofit3 = newPizzaShop3.getProfit()
+        newPizzaShop3.get_popular_topping()
+        newPizzaShop3.getGross()
+        newPizzaShop3.updateInventory()
+        print(str(newPizzaShop3))
+    if path4 is not None:
+        newPizzaShop4 = Shop(path4)
+        dailyprofit4 = newPizzaShop4.getProfit()
+        newPizzaShop4.get_popular_topping()
+        newPizzaShop4.getGross()
+        newPizzaShop4.updateInventory()
+        print(str(newPizzaShop4))
+    if path5 is not None:
+        newPizzaShop5 = Shop(path5)
+        dailyprofit5 = newPizzaShop5.getProfit()
+        newPizzaShop5.get_popular_topping()
+        newPizzaShop5.getGross()
+        newPizzaShop5.updateInventory()
+        print(str(newPizzaShop5))
+    if path6 is not None:
+        newPizzaShop6 = Shop(path6)
+        dailyprofit6 = newPizzaShop6.getProfit()
+        newPizzaShop6.get_popular_topping()
+        newPizzaShop6.getGross()
+        newPizzaShop6.updateInventory()
+        print(str(newPizzaShop6))
+    
+        
+    
      
     
 
@@ -192,7 +236,18 @@ def parse_args(arglist):
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="path to text file")
-    # we might need a second argument
+    parser.add_argument("-newday1", "--new_day", type=str, default=None,
+                        help="path for a new text file of a new day")
+    parser.add_argument("-newday2", "--new_day2", type=str, default=None,
+                        help="path for a new text file of a new day")
+    parser.add_argument("-newday3", "--new_day3", type=str, default=None,
+                        help="path for a new text file of a new day")
+    parser.add_argument("-newday4", "--new_day4", type=str, default=None,
+                        help="path for a new text file of a new day")
+    parser.add_argument("-newday5", "--new_day5", type=str, default=None,
+                        help="path for a new text file of a new day")
+    parser.add_argument("-newday6", "--new_day6", type=str, default=None,
+                        help="path for a new text file of a new day")
     return parser.parse_args(arglist)
 
 # if __name__ = "__main__": statement
