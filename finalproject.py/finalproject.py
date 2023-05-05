@@ -90,8 +90,7 @@ class Shop:
             for j in topping_list:
                 if j in self.inventory and self.inventory[j] > 1:
                     self.inventory[j]-=1
-                #else:
-                    #print(self.inventory)
+    
 
                     
         return self.inventory
@@ -164,11 +163,18 @@ def main(filepath):
         prints out the customer customer name, pizza size, toppings, and price  
     """
     newPizzaShop = Shop(filepath)
-    newPizzaShop.getProfit()
+    dailyprofit = newPizzaShop.getProfit()
     newPizzaShop.get_popular_topping()
     newPizzaShop.getGross()
     newPizzaShop.updateInventory()
     print(str(newPizzaShop))
+    if dailyprofit > 0:
+        print(f"""${dailyprofit} is a good profit. 
+Make sure to stock up on items people like to maximize profit!""")
+    else:
+        print(f"""${dailyprofit} isn't the best. 
+Maybe next time get moreitems people want to have a better day!""")
+     
     
 
 # parse_args() function
