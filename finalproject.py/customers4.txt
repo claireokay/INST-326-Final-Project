@@ -3,8 +3,8 @@ S, spinach,cheese
 M, chicken,cheese,sausages,mushrooms, spinach
 L, cheese,chicken
 L, chicken,cheese,ham,sausages
-M, sausage
-S,
+M, sausage,cheese,ham
+S, cheese,sausage
 S,
 M,
 L,
