@@ -5,7 +5,6 @@ from argparse import ArgumentParser
 import sys
 import re
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 TOPPINGS_INVENTORY= {
   'olives': 10,
@@ -153,7 +152,8 @@ class Shop:
     New Inventory: {self.inventory}
     Most Popular Toppings: {self.sorted_toppings}
     """
-        
+    
+    #def profit_graph(self, day1, day2=None, day3=None day4=None, day5=None, day6):
     
     
 # main() function
@@ -174,7 +174,7 @@ def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
     newPizzaShop.updateInventory()
     print(str(newPizzaShop))
     if path1 is not None:
-        newPizzaShop1 = Shop(path2)
+        newPizzaShop1 = Shop(path1)
         dailyprofit1 = newPizzaShop1.getProfit()
         newPizzaShop1.get_popular_topping()
         newPizzaShop1.getGross()
@@ -214,12 +214,7 @@ def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
         newPizzaShop6.get_popular_topping()
         newPizzaShop6.getGross()
         newPizzaShop6.updateInventory()
-        print(str(newPizzaShop6))
-    
-        
-    
-     
-    
+        print(str(newPizzaShop6))    
 
 # parse_args() function
 def parse_args(arglist):
@@ -236,17 +231,17 @@ def parse_args(arglist):
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="path to text file")
-    parser.add_argument("-newday1", "--new_day", type=str, default=None,
+    parser.add_argument("-path1", "--path1", type=str, default=None,
                         help="path for a new text file of a new day")
-    parser.add_argument("-newday2", "--new_day2", type=str, default=None,
+    parser.add_argument("-path2", "--path2", type=str, default=None,
                         help="path for a new text file of a new day")
-    parser.add_argument("-newday3", "--new_day3", type=str, default=None,
+    parser.add_argument("-path3", "--path3", type=str, default=None,
                         help="path for a new text file of a new day")
-    parser.add_argument("-newday4", "--new_day4", type=str, default=None,
+    parser.add_argument("-path4", "--path4", type=str, default=None,
                         help="path for a new text file of a new day")
-    parser.add_argument("-newday5", "--new_day5", type=str, default=None,
+    parser.add_argument("-path5", "--path5", type=str, default=None,
                         help="path for a new text file of a new day")
-    parser.add_argument("-newday6", "--new_day6", type=str, default=None,
+    parser.add_argument("-path6", "--path6", type=str, default=None,
                         help="path for a new text file of a new day")
     return parser.parse_args(arglist)
 
@@ -256,4 +251,5 @@ if __name__ == "__main__":
         args = parse_args(sys.argv[1:])
     except ValueError as e:
         sys.exit(str(e))
-    main(args.filepath)
+    main(args.filepath, args.path1, args.path2, args.path3, args.path4, 
+         args.path5, args.path6)
