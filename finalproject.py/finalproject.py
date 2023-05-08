@@ -41,7 +41,8 @@ class Shop:
         self.orders = {}
         self.order_num = 1
         self.total = 0
-        pattern = r"^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)*\w+)(?:,\s*)?$"
+        pattern = r"""^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)
+        *\w+)(?:,\s*)?$"""
            
         with open(filepath, "r", encoding="utf-8") as f:
             for line in f: 
@@ -116,7 +117,8 @@ class Shop:
                 else:
                     topping_counts[topping]=1
                     
-        self.sorted_toppings = sorted(topping_counts.items(), key=lambda x: x[1], reverse=True)
+        self.sorted_toppings = sorted(topping_counts.items(), key=lambda x: 
+            x[1], reverse=True)
         return self.sorted_toppings[0][0]        
     def getGross(self):
         
@@ -152,9 +154,7 @@ class Shop:
     New Inventory: {self.inventory}
     Most Popular Toppings: {self.sorted_toppings}
     """
-    
-    def profit_graph(self, day1, day2, day3, day4, day5, day6,day7):
-        fig = 
+
         
     
     
@@ -218,7 +218,14 @@ def main(filepath, path1, path2=None, path3=None, path4=None, path5=None,
         newPizzaShop6.updateInventory()
         print(str(newPizzaShop6))
     if (path1 is not None and path2 is not None and path3 is not None and
-        path4 is not None and path5 is not None and path6 is not None):   
+        path4 is not None and path5 is not None and path6 is not None):
+        profitlist= list(dailyprofit, dailyprofit1, dailyprofit2, dailyprofit3, 
+                 dailyprofit4, dailyprofit5, dailyprofit6)
+        plt.plot(profitlist)
+        plt.xlabel('Days')
+        plt.ylabel('Profit in Dollars')
+        plt.title("Pizza Shop Profit over 7 days")
+        plt.show()   
 
 # parse_args() function
 def parse_args(arglist):
