@@ -1,6 +1,6 @@
 L, onions,ham,chicken
 S, spinach,cheese
-M, chicken,cheese,sausages,mushrooms, spinach
+M, chicken,cheese,sausages,mushrooms,spinach
 L, cheese,chicken
 L, chicken,cheese,ham,sausages
 M, sausage,cheese,ham
