@@ -5,9 +5,9 @@ L, cheese,chicken
 L, chicken,cheese,ham,sausages
 M, sausage,cheese,ham
 S, cheese,sausage
-S, testong
-M,
-L,
-L,
-M,
-S,
+S, chicken,mushrooms,spinach
+M, olives,onions,spinach
+L, cheese,ham,sausage
+L, sausage,mushrooms
+M, cheese,sausage,onions
+S, onion,olives,mushrooms
