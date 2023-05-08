@@ -153,11 +153,13 @@ class Shop:
     Most Popular Toppings: {self.sorted_toppings}
     """
     
-    #def profit_graph(self, day1, day2=None, day3=None day4=None, day5=None, day6):
+    def profit_graph(self, day1, day2, day3, day4, day5, day6,day7):
+        fig = 
+        
     
     
 # main() function
-def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
+def main(filepath, path1, path2=None, path3=None, path4=None, path5=None,
          path6=None): 
     """
     
@@ -214,7 +216,9 @@ def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
         newPizzaShop6.get_popular_topping()
         newPizzaShop6.getGross()
         newPizzaShop6.updateInventory()
-        print(str(newPizzaShop6))    
+        print(str(newPizzaShop6))
+    if (path1 is not None and path2 is not None and path3 is not None and
+        path4 is not None and path5 is not None and path6 is not None):   
 
 # parse_args() function
 def parse_args(arglist):
