@@ -219,8 +219,9 @@ def main(filepath, path1, path2=None, path3=None, path4=None, path5=None,
         print(str(newPizzaShop6))
     if (path1 is not None and path2 is not None and path3 is not None and
         path4 is not None and path5 is not None and path6 is not None):
-        plt.plot(dailyprofit, dailyprofit1, dailyprofit2, dailyprofit3, 
+        profitlist= list(dailyprofit, dailyprofit1, dailyprofit2, dailyprofit3, 
                  dailyprofit4, dailyprofit5, dailyprofit6)
+        plt.plot(profitlist)
         plt.xlabel('Days')
         plt.ylabel('Profit in Dollars')
         plt.title("Pizza Shop Profit over 7 days")
