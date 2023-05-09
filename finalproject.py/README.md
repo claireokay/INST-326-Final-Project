@@ -34,7 +34,7 @@ python finalproject.py customers1.txt
 To get multiple days of the simulation:
 
 ```
-python finalproject.py customers1.txt -path1 customers2.txt -path2 customers3.txt -path3 customers4.txt -path4 customers5.txt -path5 customers6.txt -path6 customers7.txt
+python finalproject.py customers1.txt -d2 customers2.txt -d3 customers3.txt -d4 customers4.txt -d5 customers5.txt -d6 customers6.txt -d7 customers7.txt
 ```
 #  
 ## How to Interpret Results
