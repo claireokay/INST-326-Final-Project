@@ -1,4 +1,7 @@
-"""A pizza simulation that outputs a summary of that days's inventory."""
+"""A pizza simulation that outputs a summary of that days's profits, inventory,
+most popular toppings, revenue, and a line graph showing, if given 7 class
+instances, 7 days' worth of profits. 
+"""
 from argparse import ArgumentParser
 import sys
 import re
