@@ -27,20 +27,18 @@ pizzaSizeRetail = {
 }
     
 class Shop:
-    """Simulates the shop.
-    
-    Attributes:
-        customers (dictionary): person string (key) to order list (value).
-        inventory (dictionary): item string (key) to item list (value).
-    """
+    """_summary_
+    """    
     def __init__(self, filepath):
-        """_summary_
+        """Reads a text file containing all of the customer orders for a 
+        particular day 
 
         Args:
-            filepath (_type_): _description_
+            filepath (str): a text file that contains customer information 
+            including the size of pizza and the toppings on the pizza
 
         Raises:
-            TypeError: _description_
+            TypeError: when the 
         """        
         self.filepath = filepath
         self.inventory = TOPPINGS_INVENTORY 
@@ -71,16 +69,12 @@ class Shop:
         Returns:
             revenue (int): total revenue from the day's orders.
         """
-        
-        #counter that counts each topping and * by .25 (profit margin/topping)
-        
-
         for order in self.orders.values():
             p = pizzaSizeRetail[order[0]] + (0.25 * len(order[1])) if \
                 (len(order[1]) > 0) else (p == pizzaSizeRetail[order[0]])
             self.total += p
-
         return self.total 
+    
     
     def updateInventory(self):
         """Updates invetory for the shop.
@@ -97,14 +91,10 @@ class Shop:
             topping_list = order[1] 
             for j in topping_list:
                 if j in self.inventory and self.inventory[j] > 1:
-                    self.inventory[j]-=1
-    
-
-                    
+                    self.inventory[j]-=1        
         return self.inventory
          
-            
-        # use key function to sort through to find popular toppings (ff)
+         
     def get_popular_topping(self):
         """Returns the most popular topping from the list of orders
             
@@ -151,6 +141,7 @@ class Shop:
     def __repr__(self):
             return f"Shop({self.filepath})"
     
+    
     def __str__(self):
         return f"""Summary:
     Daily Revenue: ${self.revenue}
@@ -159,20 +150,24 @@ class Shop:
     Most Popular Toppings: {self.sorted_toppings}
     """
 
-        
-    
-    
-# main() function
+
 def main(filepath, path1, path2=None, path3=None, path4=None, path5=None,
          path6=None): 
-    """
-    
+    """Instantiates the Shop class for up to 7 different days of operation and
+    runs all methods within the class. If there is 
+
     Args:
-        pattern(str): regular expression that filters through txt file 
-        
-    Side effects:
-        prints out the customer customer name, pizza size, toppings, and price  
-    """
+        filepath (_type_): _description_
+        path1 (_type_): _description_
+        path2 (_type_, optional): _description_. Defaults to None.
+        path3 (_type_, optional): _description_. Defaults to None.
+        path4 (_type_, optional): _description_. Defaults to None.
+        path5 (_type_, optional): _description_. Defaults to None.
+        path6 (_type_, optional): _description_. Defaults to None.
+    
+    Side Effects:
+        Writes to stdout.
+    """    
     newPizzaShop = Shop(filepath)
     dailyprofit = newPizzaShop.getProfit()
     newPizzaShop.get_popular_topping()
@@ -233,17 +228,14 @@ def main(filepath, path1, path2=None, path3=None, path4=None, path5=None,
 
 # parse_args() function
 def parse_args(arglist):
-    """Andy: Parse command-line arguments.
-    
-    Expect one mandatory argument:
-        filepath: a path to file containing --.
-    
+    """_summary_
+
     Args:
-        arglist (list of str): argument from the command line.
-    
+        arglist (_type_): _description_
+
     Returns:
-        namespace: the parsed arguments, as a namespace.
-    """
+        _type_: _description_
+    """    
     parser = ArgumentParser()
     parser.add_argument("filepath", help="path to text file")
     parser.add_argument("-path1", "--path1", type=str, default=None,
