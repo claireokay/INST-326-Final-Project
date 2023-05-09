@@ -1,6 +1,4 @@
 """A pizza simulation that outputs a summary of that days's inventory."""
-
-# import statements
 from argparse import ArgumentParser
 import sys
 import re
@@ -35,13 +33,22 @@ class Shop:
         customers (dictionary): person string (key) to order list (value).
         inventory (dictionary): item string (key) to item list (value).
     """
-    def __init__(self, filepath): 
+    def __init__(self, filepath):
+        """_summary_
+
+        Args:
+            filepath (_type_): _description_
+
+        Raises:
+            TypeError: _description_
+        """        
         self.filepath = filepath
         self.inventory = TOPPINGS_INVENTORY 
         self.orders = {}
         self.order_num = 1
         self.total = 0
-        pattern = r"""^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)*\w+)(?:,\s*)?$"""
+        pattern = r"""(?x)^(?P<Pizza_Size>[MLS]),\s*(?P<Toppings>(?:\w+,)*\w+)
+        (?:,\s*)?$"""
            
         with open(filepath, "r", encoding="utf-8") as f:
             for line in f: 
@@ -100,12 +107,9 @@ class Shop:
         # use key function to sort through to find popular toppings (ff)
     def get_popular_topping(self):
         """Returns the most popular topping from the list of orders
-        
-        Args: 
-            self
             
-        Return:
-            A string representing the most popular topping  
+        Returns:
+            self.sorted_toppings (list of tuples)
         """    
         topping_counts = {}
         for order in self.orders.values():
@@ -118,13 +122,14 @@ class Shop:
                     
         self.sorted_toppings = sorted(topping_counts.items(), key=lambda x: 
             x[1], reverse=True)
-        return self.sorted_toppings[0][0]        
+        return self.sorted_toppings[0][0] 
+    
+           
     def getGross(self):
-        
-        """Calculate the gross revenue
-       
-        Returns
-            grossProf (int): the gross profits.
+        """Calculates the gross revenue of the Pizza Shop for a particular day.
+
+        Returns:
+            self.revenue (float): _description_
         """
         self.revenue = 0
         for order in self.orders.values():
