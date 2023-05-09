@@ -245,7 +245,7 @@ def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
         plt.title("Pizza Shop Profit over 7 days")
         plt.show()   
 
-# parse_args() function
+
 def parse_args(arglist):
     """Parse command-line arguments.
     
