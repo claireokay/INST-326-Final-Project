@@ -239,7 +239,7 @@ def main(filepath, path1=None, path2=None, path3=None, path4=None, path5=None,
         path4 is not None and path5 is not None and path6 is not None):
         profitlist= [dailyprofit, dailyprofit1, dailyprofit2, dailyprofit3, 
                  dailyprofit4, dailyprofit5, dailyprofit6]
-        plt.plot(profitlist)
+        plt.plot([1,2,3,4,5,6,7], profitlist)
         plt.xlabel('Days')
         plt.ylabel('Profit in Dollars')
         plt.title("Pizza Shop Profit over 7 days")
